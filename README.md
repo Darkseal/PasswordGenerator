@@ -29,4 +29,5 @@ That's it for now: hope you'll like it
 # Online Resources
 * Official Site: https://www.ryadel.com/
 * Class explanation and usage samples: https://www.ryadel.com/en/c-sharp-random-password-generator-asp-net-core-mvc/
+
 If you need a C# helper function to check for strong passwords, don't forget to also [read this post](https://www.ryadel.com/en/passwordcheck-c-sharp-password-class-calculate-password-strength-policy-aspnet/).
