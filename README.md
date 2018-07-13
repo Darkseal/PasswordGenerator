@@ -24,6 +24,9 @@ services.AddIdentity<ApplicationUser, IdentityRole>(
 })
 .AddEntityFrameworkStores<ApplicationDbContext>();
 ```
+
+**UPDATE**: the `PasswordOptions` native support has been removed to avoid the required dependency to the `Microsoft.AspNetCore.Identity` class: now the class has standard parameters (2 int and 4 boolean) with the same name of the corresponding `PasswordOptions` properties.
+
 That's it for now: hope you'll like it!
 
 # Online Resources
