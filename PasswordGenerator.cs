@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Ryadel.Components.Security
 {
-    public static class RandomPassword
+    public static class PasswordGenerator
     {
         /// <summary>
         /// Generates a Random Password
