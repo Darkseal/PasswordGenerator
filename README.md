@@ -24,7 +24,7 @@ services.AddIdentity<ApplicationUser, IdentityRole>(
 })
 .AddEntityFrameworkStores<ApplicationDbContext>();
 ```
-That's it for now: hope you'll like it
+That's it for now: hope you'll like it!
 
 # Online Resources
 * Official Site: https://www.ryadel.com/
