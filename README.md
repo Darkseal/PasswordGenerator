@@ -1,2 +1,32 @@
 # PasswordGenerator
 A simple C# helper class for ASP.NET Core to generate a random password with custom strength requirements: min length, uppercase, lowercase, digits &amp; more
+
+# Introduction
+Some time ago I had to implement a C# method that creates a random generated password in C#. Before committing into it I spent some minutes surfing the web, trying to find something I could use. I stumbled upon [this 2006 post from Mads Kristensen](https://madskristensen.net/post/generate-random-password-in-c), which is a guy I seriously love for all the great work he did with some incredibly useful Visual Studio extensions such as [Web Essentials](http://vswebessentials.com/), [Web Compiler](https://www.nuget.org/packages/BuildWebCompiler/), [ASP.NET Core Web Templates](https://www.nuget.org/packages/MadsKristensen.AspNetCore.Web.Templates/) - and [a bunch of other great stuff](https://www.nuget.org/profiles/madskristensen).
+
+However, the function I found in that post didn't help me much, because it had no way to ensure any strong-password requisite other than the minimum required length: more specifically, I need to generate password with at least one uppercase & lowercase letter, digit and non-alphanumeric character - and also a certain amount of unique characters. The random password generated against the Mads function could have them or not, depending on the randomness: that simply won't do in my scenario, since I had to deal with the UserManager.CreateUserAsync(username, password) method of the Microsoft.AspNetCore.Identity namespace, which utterly crashes whenever the password isn't strong enough.
+
+Eventually, I ended up coding my own helper class - just like Mads Kristensen more than 11 years ago.
+
+# Usage
+As you can see by looking at the source code, the class takes a `PasswordOptions` object as parameter, which is shipped by the `Microsoft.AspNetCore.Identity` assembly, but you can easily replace it with a two int - four bool parameter group or POCO class if you don't have that package installed. In the likely case you have it in your ASP.NET Core project, you can use the exact same object used in the `ConfigureService` method of the `Startup` class when defining the password requirements:
+
+```csharp
+// Add ASP.NET Identity support
+services.AddIdentity<ApplicationUser, IdentityRole>(
+    opts =>
+{
+    opts.Password.RequireDigit = true;
+    opts.Password.RequireLowercase = true;
+    opts.Password.RequireUppercase = true;
+    opts.Password.RequireNonAlphanumeric = false;
+    opts.Password.RequiredLength = 8;
+})
+.AddEntityFrameworkStores<ApplicationDbContext>();
+```
+That's it for now: hope you'll like it
+
+# Online Resources
+* Official Site: https://www.ryadel.com/
+* Class explanation and usage samples: https://www.ryadel.com/en/c-sharp-random-password-generator-asp-net-core-mvc/
+If you need a C# helper function to check for strong passwords, don't forget to also [read this post](https://www.ryadel.com/en/passwordcheck-c-sharp-password-class-calculate-password-strength-policy-aspnet/).
