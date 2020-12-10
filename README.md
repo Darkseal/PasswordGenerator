@@ -30,7 +30,9 @@ services.AddIdentity<ApplicationUser, IdentityRole>(
 That's it for now: hope you'll like it!
 
 ## Security considerations
-The password randomness is calculated using a `CryptoRandom` class that mimics the standard Random class in the .NET Framework, replacing its standard (non-secure) behaviour with a cryptographic random number generator. The `CryptoRandom` class has been taken from [IdentityModel](https://github.com/IdentityModel/IdentityModel/), however a second implementation (`CryptoRandom2`) has been added as well (taken from [here](https://gist.github.com/niik/1017834) - credits to Stephen Toub, Shawn Farkas and Markus Olsson). If you want to use the second implementation, just rename the `CryptoRandom2.cs` file and class to `CryptoRandom` (or instantiate a `CryptoRandom2` class in the `PasswordGenerator.cs` file).
+The password randomness is calculated using a `CryptoRandom` class that mimics the standard Random class in the .NET Framework, replacing its standard (non-secure) behaviour with a cryptographic random number generator. The `CryptoRandom` class has been taken from [IdentityModel](https://github.com/IdentityModel/IdentityModel/).
+
+In the GitHub project you'll also find an alternative `CryptoRandom` implementation (`CryptoRandom2`), which has been taken from [here](https://gist.github.com/niik/1017834) (credits to Stephen Toub, Shawn Farkas and Markus Olsson). If you want to use the alternative implementation, just rename the `CryptoRandom2.cs` file and class to `CryptoRandom`, replacing the previous one - or just instantiate a `CryptoRandom2` object in the `PasswordGenerator.cs` file.
 
 ## Online Resources
 * Official Site: https://www.ryadel.com/
