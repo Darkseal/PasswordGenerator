@@ -29,8 +29,12 @@ services.AddIdentity<ApplicationUser, IdentityRole>(
 
 That's it for now: hope you'll like it!
 
-# Online Resources
+## Security considerations
+The password randomness is calculated using a `CryptoRandom` class that mimics the standard Random class in the .NET Framework, replacing its standard (non-secure) behaviour with a cryptographic random number generator. The `CryptoRandom` class has been taken from [IdentityModel](https://github.com/IdentityModel/IdentityModel/), however a second implementation (`CryptoRandom2`) has been added as well (taken from [here](https://gist.github.com/niik/1017834) - credits to Stephen Toub, Shawn Farkas and Markus Olsson). If you want to use the second implementation, just rename the `CryptoRandom2.cs` file and class to `CryptoRandom` (or instantiate a `CryptoRandom2` class in the `PasswordGenerator.cs` file).
+
+## Online Resources
 * Official Site: https://www.ryadel.com/
 * Class explanation and usage samples: https://www.ryadel.com/en/c-sharp-random-password-generator-asp-net-core-mvc/
 
+## Additional References
 If you need a C# helper function to check for strong passwords, don't forget to also [read this post](https://www.ryadel.com/en/passwordcheck-c-sharp-password-class-calculate-password-strength-policy-aspnet/).
