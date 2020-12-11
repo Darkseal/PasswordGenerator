@@ -27,7 +27,7 @@ namespace Ryadel.Components.Security
             "0123456789",                   // digits
             "!@$?_-"                        // non-alphanumeric
             };
-            CryptoRandom rand = new CryptoRandom(true);
+            CryptoRandom rand = new CryptoRandom();
             List<char> chars = new List<char>();
 
             if (requireUppercase)
