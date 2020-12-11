@@ -84,14 +84,14 @@ namespace Ryadel.Components.Security
         /// </summary>
         /// <param name="ignoredSeed">The ignored seed.</param>
         [SuppressMessage("Microsoft.Usage", "CA1801:ReviewUnusedParameters", MessageId = "ignoredSeed", Justification = "Cannot remove this parameter as we implement the full API of System.Random")]
-        public CryptoRandom(int ignoredSeed) : this(true) { }
+        public CryptoRandom2(int ignoredSeed) : this(true) { }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CryptoRandom"/> class with
         /// optional random buffer.
         /// </summary>
         /// <param name="enableRandomPool">set to <c>true</c> to enable the random pool buffer for increased performance.</param>
-        public CryptoRandom(bool enableRandomPool)
+        public CryptoRandom2(bool enableRandomPool)
         {
             IsRandomPoolEnabled = enableRandomPool;
         }
